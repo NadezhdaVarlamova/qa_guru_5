@@ -10,13 +10,13 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
     SelenideElement
-            firstNameInput =  $("#firstName"),
-            lastNameInput =  $("#lastName"),
+            firstNameInput = $("#firstName"),
+            lastNameInput = $("#lastName"),
             popupResults = $(".modal-content"),
             tableResults = $(".table"),
             userEmailInput = $("#userEmail"),
             phoneInput = $("#userNumber"),
-            subjectsInput= $("#subjectsInput"),
+            subjectsInput = $("#subjectsInput"),
             uploadPictureInput = $("#uploadPicture"),
             addressInput = $x("//textarea[@id=\"currentAddress\"]"),
             stateSelect = $("#react-select-3-input"),
@@ -24,72 +24,73 @@ public class RegistrationPage {
             submitButton = $("#submit");
 
     public CalendarComponent calendarComponent = new CalendarComponent();
+    public StudentData studentData = new StudentData();
 
-    public RegistrationPage openPage(String page){
-        open(page);
+    public RegistrationPage openPage() {
+        open("https://demoqa.com/automation-practice-form");
         return this;
     }
 
-    public RegistrationPage typeFirstName(String firstName){
+    public RegistrationPage typeFirstName(String firstName) {
         firstNameInput.setValue(firstName);
         return this;
     }
 
-    public RegistrationPage typeLastName(String lastName){
+    public RegistrationPage typeLastName(String lastName) {
         lastNameInput.setValue(lastName);
         return this;
     }
 
-    public RegistrationPage typeUserEmail(String userEmail){
+    public RegistrationPage typeUserEmail(String userEmail) {
         userEmailInput.setValue(userEmail);
         return this;
     }
 
-    public RegistrationPage typeGender(String gender){
+    public RegistrationPage typeGender(String gender) {
         $(byText(gender)).click();
         return this;
     }
 
-    public RegistrationPage typePhone(String phone){
+    public RegistrationPage typePhone(String phone) {
         phoneInput.setValue(phone);
         return this;
     }
 
-    public RegistrationPage typeSubject(String subjects){
+    public RegistrationPage typeSubject(String subjects) {
         subjectsInput.setValue(subjects).pressEnter();
         return this;
     }
 
-    public RegistrationPage typeHobbies(String hobbies){
+    public RegistrationPage typeHobbies(String hobbies) {
         $(byText(hobbies)).click();
         return this;
     }
 
-    public RegistrationPage setAddress(String address){
+    public RegistrationPage setAddress(String address) {
         addressInput.sendKeys(address);
         return this;
     }
 
-    public RegistrationPage uploadPicture(String fileName){
+    public RegistrationPage uploadPicture(String fileName) {
         uploadPictureInput.uploadFromClasspath(fileName);
         return this;
     }
 
-    public RegistrationPage selectStateAndCity(String state, String city){
+    public RegistrationPage selectStateAndCity(String state, String city) {
         stateSelect.setValue(state).pressEnter();
         citySelect.setValue(city).pressEnter();
         return this;
     }
 
-    public RegistrationPage submitForm(){
+    public RegistrationPage submitForm() {
         submitButton.click();
         return this;
     }
 
 
-    public RegistrationPage checkResults(String firstName, String lastName, String email, String gender, String phone, String bday, String subjects, String hobbies, String picture, String currentAddress, String state, String city){
+    public RegistrationPage checkResults(String firstName, String lastName, String email, String gender, String phone, String bday, String subjects, String hobbies, String picture, String currentAddress, String state, String city) {
         popupResults.shouldBe(visible);
-        tableResults.shouldHave(text(firstName +" "+ lastName),
+        tableResults.shouldHave(text(firstName + " " + lastName),
                 text(email),
                 text(gender),
                 text(phone),
@@ -101,4 +102,5 @@ public class RegistrationPage {
                 text(state + " " + city));
         return this;
     }
+
 }

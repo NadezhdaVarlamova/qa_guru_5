@@ -26,8 +26,8 @@ public class PracticeFormWithPageObjectsTests {
             city = "Karnal";
 
     @Test
-    void successTests (){
-        registrationPage.openPage("https://demoqa.com/automation-practice-form")
+    void successTests() {
+        registrationPage.openPage()
                 .typeFirstName(firstName)
                 .typeLastName(lastName)
                 .typeUserEmail(userEmail)
@@ -35,13 +35,13 @@ public class PracticeFormWithPageObjectsTests {
                 .typePhone(phone);
         registrationPage.calendarComponent.setDae(year, month, day);
         registrationPage.typeSubject(subjects)
-        .typeHobbies(hobbiesSports)
-        .typeHobbies(hobbiesReading)
-        .typeHobbies(hobbiesMusic)
-        .uploadPicture(fileName)
-        .setAddress(address)
-        .selectStateAndCity(state, city)
-        .submitForm()
-        .checkResults(firstName, lastName, userEmail, gender, phone,day + " " + month + "," + year, subjects, hobbiesSports + ", " + hobbiesReading + ", " + hobbiesMusic, fileName, address, state, city);
+                .typeHobbies(hobbiesSports)
+                .typeHobbies(hobbiesReading)
+                .typeHobbies(hobbiesMusic)
+                .uploadPicture(fileName)
+                .setAddress(address)
+                .selectStateAndCity(state, city)
+                .submitForm()
+                .checkResults(firstName, lastName, userEmail, gender, phone, day + " " + month + "," + year, subjects, hobbiesSports + ", " + hobbiesReading + ", " + hobbiesMusic, fileName, address, state, city);
     }
 }
