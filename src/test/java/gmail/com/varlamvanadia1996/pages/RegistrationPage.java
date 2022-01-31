@@ -88,19 +88,22 @@ public class RegistrationPage {
     }
 
 
-    public RegistrationPage checkResults(String firstName, String lastName, String email, String gender, String phone, String bday, String subjects, String hobbies, String picture, String currentAddress, String state, String city) {
+    public RegistrationPage checkResults(StudentData studentData) {
         popupResults.shouldBe(visible);
-        tableResults.shouldHave(text(firstName + " " + lastName),
-                text(email),
-                text(gender),
-                text(phone),
-                text(bday),
-                text(subjects),
-                text(hobbies),
-                text(picture),
-                text(currentAddress),
-                text(state + " " + city));
+        tableResults.shouldHave(text(studentData.firstName + " " + studentData.lastName),
+                text(studentData.userEmail),
+                text(studentData.gender),
+                text(studentData.phone),
+                text(studentData.year),
+                text(studentData.month),
+                text(studentData.day),
+                text(studentData.subjects),
+                text(studentData.hobbiesSports),
+                text(studentData.hobbiesReading),
+                text(studentData.hobbiesMusic),
+                text(studentData.fileName),
+                text(studentData.address),
+                text(studentData.state + " " + studentData.city));
         return this;
     }
-
 }
